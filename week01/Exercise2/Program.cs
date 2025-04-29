@@ -1,44 +1,27 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Enter your grade percentage: ");
-        string input = Console.ReadLine();
-        int percentage = int.Parse(input);
+        Job job1 = new Job();
+        job1._company = "Microsoft";
+        job1._jobTitle = "Software Engineer";
+        job1._startYear = 2019;
+        job1._endYear = 2022;
 
-        string letter;
-        if (percentage >= 90)
-        {
-            letter = "A";
-        }
-        else if (percentage >= 80)
-        {
-            letter = "B";
-        }
-        else if (percentage >= 70)
-        {
-            letter = "C";
-        }
-        else if (percentage >= 60)
-        {
-            letter = "D";
-        }
-        else
-        {
-            letter = "F";
-        }
+        Job job2 = new Job();
+        job2._company = "Apple";
+        job2._jobTitle = "Manager";
+        job2._startYear = 2022;
+        job2._endYear = 2023;
 
-        Console.WriteLine($"Your letter grade is: {letter}");
+        Resume myResume = new Resume();
+        myResume._name = "Allison Rose";
+        myResume._jobs.Add(job1);
+        myResume._jobs.Add(job2);
 
-        if (percentage >= 70)
-        {
-            Console.WriteLine("Congratulations, you passed the course!");
-        }
-        else
-        {
-            Console.WriteLine("Better luck next time!");
-        }
+        myResume.Display();
     }
 }
