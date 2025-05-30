@@ -27,7 +27,7 @@ public abstract class Goal
     // for saving to a file, I think
     public virtual string GetStringRepresentation()
     {
-        return $"{goalName}: {goalDescription} ({points} pts)";
+        return $"{this.GetType().Name}:{goalName},{goalDescription},{points}";
     }
 }
 
