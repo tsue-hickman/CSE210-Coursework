@@ -9,4 +9,22 @@ public class SimpleGoal : Goal
     {
         isDone = false; // need to make sure it isn't done yet
     }
+
+    public override void RecordEvent()
+    {
+        // need to mark as done here later on
+    }
+
+    public override bool IsComplete()
+    {
+        return isDone;
+    }
+
+    //saving to a file format
+    public override string GetStringRepresentation()
+    {
+        return $"SimpleGoal:{goalName},{goalDescription},{points},{isDone}";
+    }
+
 }
+
