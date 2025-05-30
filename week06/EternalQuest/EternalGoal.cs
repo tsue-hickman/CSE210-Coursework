@@ -18,7 +18,7 @@ public class EternalGoal : Goal
         return false; // because it is never complete
     }
 
-    public override string GtringRepresentation()
+    public override string GetStringRepresentation()
     {
         return $"EternalGoal:{goalName},{goalDescription},{points}";
     }
