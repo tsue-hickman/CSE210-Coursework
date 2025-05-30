@@ -13,13 +13,27 @@ public abstract class Goal
         goalDescription = description;
         points = pointsValue;
     }
+
+    //gotta define these in child classes
+    public abstract void RecordEvent();
+    public abstract bool IsComplete();
+
+    //default way to show details, checklist might override this
+    public virtual string GetDetailsString()
+    {
+        return $"{goalName}: {goalDescription} ({points} pts)";
+    }
+
+    // for saving to a file, I think
+    public virtual string GetStringRepresentation()
+    {
+        return $"{goalName}: {goalDescription} ({points} pts)";
+    }
 }
 
 
 
-//gotta define these in child classes
-public abstract void RecordEvent();
-    public abstract bool IsComplete();
+
 
 
 
