@@ -9,6 +9,6 @@ public class Circle : Shape
 
     public override float GetArea()
     {
-        return
+        return (float)(Math.PI * Math.Pow(rad, 2)); // calculate circle area
     }
 }
