@@ -1,4 +1,4 @@
-public class Circle : Shape
+public class Circle : Shapes
 {
     private float rad; // circle radius
 
