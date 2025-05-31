@@ -9,4 +9,10 @@ public class Rectangle : Shapes
         len = length;
         wid = width;
     }
+
+    public override float GetArea()
+    {
+        return len * wid; // calculates teh area
+
+    }
 }
