@@ -5,7 +5,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Shapes Project.");
+        // need to create a list for shapes 
+        List<Shapes> shapes = new List<Shapes>();
+
+        // here are the shapes from the other cs files
+        shapeList
     }
 }
 
