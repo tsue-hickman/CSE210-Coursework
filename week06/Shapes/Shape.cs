@@ -12,5 +12,10 @@ public abstract class Shapes
         return _color;
     }
 
-    public
+    public void SetColor(string new_color)
+    {
+        _color = new_color;
+    }
+
+    public abstract float GetArea(); // abstract method for getting the area
 }
