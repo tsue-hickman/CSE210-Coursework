@@ -15,28 +15,32 @@ namespace ExerciseTracking
             minutes = min;
         }
 
+        // Properties for encapsulation
+        protected string Date { get { return dateActivity; } }
+        protected int Minutes { get { return minutes; } }
+
         public virtual double GetDistance()
         {
-            return 0.0; // will be overriden in child classes
+            return 0.0; // overridden in child classes
         }
 
         public virtual double GetSpeed()
         {
-            return 0.0; // will be overriden in child classes
+            return 0.0; // overridden in child classes
         }
 
         public virtual double GetPace()
         {
-            return 0.0; // will be overriden in child classes
+            return 0.0; // overridden in child classes
         }
 
         public virtual string GetSummary()
         {
-            return $"{dateActivity} Activity ({minutes} min)";
+            return $"{Date} Activity ({Minutes} min)";
         }
     }
 
-    // Running class w inhertance
+    // Running class w inheritance
     class Running : Activity
     {
         private double distance; // distance in miles
@@ -53,24 +57,25 @@ namespace ExerciseTracking
 
         public override double GetSpeed()
         {
-            return (distance / minutes) * 60; // speed in mph
+            return (distance / Minutes) * 60; // speed in mph
         }
 
         public override double GetPace()
         {
-            return distance != 0 ? minutes / distance : 0; // min per mile
+            return distance != 0 ? Minutes / distance : 0; // min per mile
         }
 
         public override string GetSummary()
         {
-            return $"{dateActivity} Running ({minutes} min)- Distance {distance:F1} miles, Speed {GetSpeed():F1} mph, Pace: {GetPace():F1} min per mile";
+            return $"{Date} Running ({Minutes} min)- Distance {distance:F1} miles, Speed {GetSpeed():F1} mph, Pace: {GetPace():F1} min per mile";
         }
     }
 
-    // Cycling class inherting from Activity
+    // Cycling class inheriting from Activity
     class Cycling : Activity
     {
         private double speed; // in mph
+
         public Cycling(string date, int minutes, double spd) : base(date, minutes)
         {
             speed = spd;
@@ -78,7 +83,7 @@ namespace ExerciseTracking
 
         public override double GetDistance()
         {
-            return (speed * minutes) / 60; // distance = speed * time
+            return (speed * Minutes) / 60; // distance = speed * time
         }
 
         public override double GetSpeed()
@@ -93,11 +98,11 @@ namespace ExerciseTracking
 
         public override string GetSummary()
         {
-            return $"{dateActivity} Cycling ({minutes} min)- Distance {GetDistance():F1} miles, Speed {speed:F1} mph, Pace: {GetPace():F1} min per mile";
+            return $"{Date} Cycling ({Minutes} min)- Distance {GetDistance():F1} miles, Speed {speed:F1} mph, Pace: {GetPace():F1} min per mile";
         }
     }
 
-    // Swimming class w inhertance
+    // Swimming class w inheritance
     class Swimming : Activity
     {
         private int laps;
@@ -114,17 +119,18 @@ namespace ExerciseTracking
 
         public override double GetSpeed()
         {
-            return (GetDistance() / minutes) * 60; // mph
+            return (GetDistance() / Minutes) * 60; // mph
         }
 
         public override double GetPace()
         {
-            return minutes / GetDistance(); // wrong: no zero check
+            double distance = GetDistance();
+            return distance != 0 ? Minutes / distance : 0; // fixed: check zero
         }
 
         public override string GetSummary()
         {
-            return $"{dateActivity} Swimming ({minutes} min)- Distance {GetDistance():F1} miles, Speed {GetSpeed():F1} mph, Pace: {GetPace():F1} min per mile";
+            return $"{Date} Swimming ({Minutes} min)- Distance {GetDistance():F1} miles, Speed {GetSpeed():F1} mph, Pace: {GetPace():F1} min per mile";
         }
     }
 
@@ -141,7 +147,7 @@ namespace ExerciseTracking
 
             foreach (var activity in activities)
             {
-                Console.WriteLine(activity.GetSummary()); // shows polymorfism
+                Console.WriteLine(activity.GetSummary()); // shows polymorphism
             }
         }
     }
