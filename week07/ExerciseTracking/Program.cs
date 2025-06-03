@@ -69,4 +69,11 @@ namespace ExerciseTracking
     }
 
     class Program
+    {
+        static void Main(string[] args)
+        {
+            Running run = new Running("03/06/2023", 30, 3.0);
+            Console.WriteLine(run.GetSummary());
+        }
+    }
 }
