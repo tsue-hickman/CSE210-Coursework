@@ -16,18 +16,17 @@ namespace ExerciseTracking
 
         public virtual double GetDistance()
         {
-            return 0.0; // will be overridden in child classes
-
+            return 0.0; // will be overriden in child classes
         }
 
         public virtual double GetSpeed()
         {
-            return 0.0; // will be overridden in child classes
+            return 0.0; // will be overriden in child classes
         }
 
         public virtual double GetPace()
         {
-            return 0.0; // will be overridden in child classes
+            return 0.0; // will be overriden in child classes
         }
 
         public virtual string GetSummary()
@@ -36,16 +35,15 @@ namespace ExerciseTracking
         }
     }
 
-    //Running the classes w inheritance
+    // Running class w inhertance
     class Running : Activity
     {
         private double distance; // distance in miles
 
-        public Running(String date, int minutes, double dist) : base(date, minutes)
+        public Running(string date, int minutes, double dist) : base(date, minutes)
         {
             distance = dist;
         }
-
 
         public override double GetDistance()
         {
@@ -59,7 +57,7 @@ namespace ExerciseTracking
 
         public override double GetPace()
         {
-            return minutes / distance; // minutes per mile
+            return distance != 0 ? minutes / distance : 0; // min per mile, check for zero
         }
 
         public override string GetSummary()
@@ -72,7 +70,7 @@ namespace ExerciseTracking
     {
         static void Main(string[] args)
         {
-            Running run = new Running("03/06/2023", 30, 3.0);
+            Running run = new Running("03 Nov 2022", 30, 3.0);
             Console.WriteLine(run.GetSummary());
         }
     }
